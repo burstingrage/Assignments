@@ -1,0 +1,57 @@
+import javax.swing.JOptionPane;
+/**
+ * @author Nhi Le
+ * 
+ * The casing does not matter in the username and password.
+ * Username: Fish
+ * Password: Scale
+ * 
+ */
+public class Assignment3 { 
+   public enum AccountType {Administrator, Student, Staff}
+ public static void main(String[] args) { 
+	 
+	 int attempts = 0;
+	 int MaxAttempts = 3;
+	 
+	 while (attempts < MaxAttempts) {
+	 String Username = JOptionPane.showInputDialog("Enter Username:");
+	 if (Username.equalsIgnoreCase("fish")) {
+		 
+		 while (attempts < MaxAttempts) {
+			 String Password = JOptionPane.showInputDialog("Enter Password:");
+			 
+		 if (Password.equalsIgnoreCase("scale")) {
+			 AccountType[] choices = { AccountType.Administrator, AccountType.Student, AccountType.Staff }; 
+             AccountType input = (AccountType) JOptionPane.showInputDialog(null,"Select your account type.", "Account Type", 
+                                                                           JOptionPane.INFORMATION_MESSAGE, null, choices, choices[2]);
+             switch (input) {
+		 case Student:
+				JOptionPane.showMessageDialog(null, "Welcome Student! You can only read files.");
+				break;
+		 case Administrator:
+			 JOptionPane.showMessageDialog(null, "Welcome Admin! You can update and read files.");
+				break;
+		 case Staff:
+			 JOptionPane.showMessageDialog(null, "Welcome Staff! You can update, read, add, and delete files.");
+				break;
+             }
+             System.exit(0);
+             
+		 } else {
+			 JOptionPane.showMessageDialog(null, "Invalid Password!");
+			 attempts= attempts + 1;
+			 }
+		 }
+		 }
+	 
+	 else {
+		 JOptionPane.showMessageDialog(null, "Invalid Username!");
+		 attempts= attempts + 1;
+  }
+	 if (attempts==3) {
+		 JOptionPane.showMessageDialog(null, "Contact Administrator.");
+}
+}
+}
+}
